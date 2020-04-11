@@ -22,3 +22,9 @@ jobs:
         task-definition: ./task-definition.json
         container-name: automation-api 
         image: charlottes-automation:${{ github.sha }}
+    - name: Deploy to Amazon ECS service
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.render-web-container.outputs.task-definition }}
+        service: automation-api 
+        cluster: charlottes-automations 
