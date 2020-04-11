@@ -14,7 +14,6 @@
                     "containerPort": "8080",
                     "protocol": "tcp"
                 }
-                
             ]
         }
     ],
