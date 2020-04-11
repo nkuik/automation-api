@@ -12,6 +12,12 @@ jobs:
         account_id: ${{ secrets.AWS_ACCOUNT_ID }}
         repo: charlottes-automation 
         region: eu-west-1 
-        tags: ${{ github.sha }}
+        tags: automation-api:${{ github.sha }}
         dockerfile: Dockerfile
-        path: .
+    - name: Render Amazon ECS task definition
+      id: render-web-container
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json
+        container-name: automation-api 
+        image: charlottes-automation/automation-api:${{ github.sha }}
