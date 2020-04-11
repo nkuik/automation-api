@@ -13,3 +13,4 @@ jobs:
         region: eu-west-1 
         tags: ${{ github.sha }}
         dockerfile: Dockerfile
+        path: ../../
