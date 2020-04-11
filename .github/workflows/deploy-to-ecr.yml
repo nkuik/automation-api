@@ -5,7 +5,6 @@ jobs:
     name: Build, push, and deploy container:w
     runs-on: ubuntu-latest
     steps:
-    - name: Build/push image
     - uses: actions/checkout@v1
     - uses: kciter/aws-ecr-action@v1
       with:
@@ -16,7 +15,6 @@ jobs:
         region: eu-west-1 
         tags: ${{ github.sha }}
         dockerfile: Dockerfile
-    - name: Render Amazon ECS task definition
     - uses: actions/checkout@v1
       id: render-web-container
       uses: aws-actions/amazon-ecs-render-task-definition@v1
