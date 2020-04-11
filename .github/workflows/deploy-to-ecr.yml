@@ -15,8 +15,6 @@ jobs:
         region: eu-west-1 
         tags: ${{ github.sha }}
         dockerfile: Dockerfile
-    - name: ls
-      run: ls
     - name: Render Amazon ECs task
       id: render-web-container
       uses: aws-actions/amazon-ecs-render-task-definition@v1
