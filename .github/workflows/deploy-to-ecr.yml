@@ -11,5 +11,5 @@ jobs:
         account_id: ${{ secrets.AWS_ACCOUNT_ID }}
         repo: charlottes-automation 
         region: eu-west-1 
-        tags: latest,${{ github.sha }}
-        create_repo: true
+        tags: ${{ github.sha }}
+        dockerfile: Dockerfile
