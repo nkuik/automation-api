@@ -15,11 +15,12 @@ jobs:
         region: eu-west-1 
         tags: ${{ github.sha }}
         dockerfile: Dockerfile
+    - name: ls
+      run: ls
     - name: Render Amazon ECs task
       id: render-web-container
       uses: aws-actions/amazon-ecs-render-task-definition@v1
-      uses: actions/checkout@v1
       with:
-        task-definition: task-definition.json
+        task-definition: ./task-definition.json
         container-name: automation-api 
         image: charlottes-automation:${{ github.sha }}
