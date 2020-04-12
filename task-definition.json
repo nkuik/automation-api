@@ -1,6 +1,6 @@
 {
     "requiresCompatibilities": [
-        "FARGATE"
+        "ECS"
     ],
     "inferenceAccelerators": [],
     "containerDefinitions": [
