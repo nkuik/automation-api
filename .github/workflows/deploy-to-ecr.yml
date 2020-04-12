@@ -33,4 +33,4 @@ jobs:
       with:
         task-definition: ${{ steps.render-web-container.outputs.task-definition }}
         service: automation
-        cluster: charlottes-automation
+        cluster: automation
