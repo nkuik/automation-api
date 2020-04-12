@@ -21,7 +21,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-1
-        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
     - name: Render Amazon ECS task
       id: render-web-container
       uses: aws-actions/amazon-ecs-render-task-definition@v1
@@ -33,5 +32,5 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.render-web-container.outputs.task-definition }}
-        service: automation-api 
+        service: automation
         cluster: charlottes-automation
