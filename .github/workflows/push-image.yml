@@ -3,7 +3,7 @@ on: push
 jobs:
   build-and-push:
     name: Build and push to Docker hub 
-    runs-on: alpine 
+    runs-on: macos-latest 
     steps:
     - uses: actions/checkout@master
     - name: Publish to Registry
