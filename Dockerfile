@@ -1,9 +1,5 @@
 FROM balenalib/raspberry-pi-alpine-golang
 
-RUN apk --update add git less openssh && \
-  rm -rf /var/lib/apt/lists/* && \
-  rm /var/cache/apk/*
-
 RUN go get -v -d github.com/gin-gonic/gin
 RUN go install -v github.com/gin-gonic/gin
 
