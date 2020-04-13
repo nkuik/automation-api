@@ -1,25 +1,14 @@
-ARG GO_VERSION=1.14
+FROM golang:latest
 
-FROM golang:${GO_VERSION}-alpine AS builder
+RUN go get github.com/gin-gonic/gin && \
+go get github.com/jackc/pgx && \
+go get github.com/nkuik/automation-api
 
-RUN apk update && apk add alpine-sdk git && rm -rf /var/cache/apk/*
+RUN mkdir /go/public
 
-RUN mkdir -p /api
-WORKDIR /api
+# Getting a simple example
+RUN mv /go/src/github.com/automation-api/main.go /go/public/
 
-RUN go get -u github.com/gin-gonic/gin
-
-COPY . .
-RUN go build -o ./app ./main.go
-
-FROM alpine:latest
-
-RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
-
-RUN mkdir -p /api
-WORKDIR /api
-COPY --from=builder /api/app .
+CMD go run /go/public/main.go
 
 EXPOSE 8080
-
-ENTRYPOINT ["./app"]
