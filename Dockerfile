@@ -1,14 +1,14 @@
-FROM golang:latest
+FROM balenalib/raspberry-pi-alpine-golang
 
 RUN go get github.com/gin-gonic/gin && \
-go get github.com/jackc/pgx && \
-go get github.com/nkuik/automation-api
+  go get github.com/jackc/pgx
 
-RUN mkdir /go/public
+RUN mkdir ${GOPATH}/public
 
 # Getting a simple example
-RUN mv /go/src/github.com/nkuik/automation-api/main.go /go/public/
-
-CMD go run /go/public/main.go
+COPY main.go ${GOPATH}/public/
 
 EXPOSE 8080
+
+CMD go run ${GOPATH}/public/main.go
+
