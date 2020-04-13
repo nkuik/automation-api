@@ -1,7 +1,6 @@
 FROM balenalib/raspberry-pi-alpine-golang
 
-RUN go get github.com/gin-gonic/gin && \
-  go get github.com/jackc/pgx
+RUN go get github.com/gin-gonic/gin
 
 RUN mkdir ${GOPATH}/public
 
