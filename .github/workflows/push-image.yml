@@ -4,12 +4,12 @@ jobs:
   build-and-push:
     runs-on: macos-latest 
     steps:
-    - name: Build and push image
     - uses: actions/checkout@master
-    env:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-    run: |
-      docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      docker build -t nkuik89/automation-api:latest .
-      docker push nkuik89/automation-api:latest
+    - name: Build and push image
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        docker build -t nkuik89/automation-api:latest .
+        docker push nkuik89/automation-api:latest
