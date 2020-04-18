@@ -1,5 +1,7 @@
 FROM balenalib/raspberry-pi-alpine-golang
 
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 RUN go get -v -d github.com/gin-gonic/gin
 RUN go install -v github.com/gin-gonic/gin
 
